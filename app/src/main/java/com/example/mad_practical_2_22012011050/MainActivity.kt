@@ -8,13 +8,16 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
     val TAG = "MainActivity"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -27,10 +30,12 @@ class MainActivity : AppCompatActivity() {
     {
         Log.i(TAG, msg)
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+        Snackbar.make(findViewById(R.id.main),msg,Snackbar.LENGTH_LONG).show()
     }
     override fun onStart() {
         super.onStart()
         Showmessage("onStart Method is called")
+
     }
     override fun onResume() {
         super.onResume()
@@ -52,5 +57,7 @@ class MainActivity : AppCompatActivity() {
         super.onRestart()
         Showmessage("onRestart Method is called")
     }
+
+
 
 }

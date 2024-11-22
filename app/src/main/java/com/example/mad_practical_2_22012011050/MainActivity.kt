@@ -58,6 +58,4 @@ class MainActivity : AppCompatActivity() {
         Showmessage("onRestart Method is called")
     }
 
-
-
 }
